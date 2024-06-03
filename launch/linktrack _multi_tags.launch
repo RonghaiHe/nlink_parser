@@ -25,4 +25,5 @@
         <param name="port_name" value="/dev/ttyCH343USB2" />
         <param name="baud_rate" value="$(arg baud_rate_value)" />
     </node>
+    <node pkg="robust_cl_real_world_client" type="util_real.py" name="robot_$(arg id)">
 </launch>
