@@ -12,17 +12,17 @@
     <arg name="new_topic_name1" default="$(arg new_topic_prefix)$(arg topic_base1)" />
     <arg name="new_topic_name2" default="$(arg new_topic_prefix)$(arg topic_base2)" />
     
-    <node pkg="nlink_parser" type="linktrack" name="linktrack0" output="$(arg output)">
+    <node pkg="nlink_parser" type="linktrack" name="linktrack$(arg topic_base0)" output="$(arg output)">
         <remap from="$(arg origin_topic_name)" to="$(arg new_topic_name0)"/>
         <param name="port_name" value="/dev/ttyCH343USB0" />
         <param name="baud_rate" value="$(arg baud_rate_value)" />
     </node>
-    <node pkg="nlink_parser" type="linktrack" name="linktrack1" output="$(arg output)">
+    <node pkg="nlink_parser" type="linktrack" name="linktrack$(arg topic_base1)" output="$(arg output)">
         <remap from="$(arg origin_topic_name)" to="$(arg new_topic_name1)"/>
         <param name="port_name" value="/dev/ttyCH343USB1" />
         <param name="baud_rate" value="$(arg baud_rate_value)" />
     </node>
-    <node pkg="nlink_parser" type="linktrack" name="linktrack2" output="$(arg output)">
+    <node pkg="nlink_parser" type="linktrack" name="linktrack$(arg topic_base2)" output="$(arg output)">
         <remap from="$(arg origin_topic_name)" to="$(arg new_topic_name2)"/>
         <param name="port_name" value="/dev/ttyCH343USB2" />
         <param name="baud_rate" value="$(arg baud_rate_value)" />
