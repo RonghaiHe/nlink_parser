@@ -1,14 +1,16 @@
 <launch>
     <arg name="id" default="0" />
-    <arg name="topic_base" value="$(eval arg('id') * 3)" /> <!-- Each robot has 3 ltp-b modules -->
+    <arg name="topic_base0" value="$(eval arg('id') * 3)" /> <!-- Each robot has 3 ltp-b modules -->
+    <arg name="topic_base1" value="$(eval arg('topic_base0') + 1)" />
+    <arg name="topic_base2" value="$(eval arg('topic_base0') + 2)" />
     <arg name="new_topic_prefix" default="nlink_linktrack_nodeframe2_" />
 
     <arg name="output" default="screen" />
     <arg name="baud_rate_value" default="921600" />
     <arg name="origin_topic_name" default="nlink_linktrack_nodeframe2" />
-    <arg name="new_topic_name0" default="$(arg new_topic_prefix)$(arg topic_base)" />
-    <arg name="new_topic_name1" default="$(arg new_topic_prefix)$(eval arg('topic_base') + 1)" />
-    <arg name="new_topic_name2" default="$(arg new_topic_prefix)$(eval arg('topic_base') + 2)" />
+    <arg name="new_topic_name0" default="$(arg new_topic_prefix)$(arg topic_base0)" />
+    <arg name="new_topic_name1" default="$(arg new_topic_prefix)$(arg topic_base1)" />
+    <arg name="new_topic_name2" default="$(arg new_topic_prefix)$(arg topic_base2)" />
     
     <node pkg="nlink_parser" type="linktrack" name="linktrack0" output="$(arg output)">
         <remap from="$(arg origin_topic_name)" to="$(arg new_topic_name0)"/>
