@@ -2,6 +2,9 @@
 Fork后的更新：
 
 作为[仓库](https://github.com/dc-cl/robust_cl_real_world_client)的一部分，使用3个模块获取真值和相对距离。
+
+通过 `ls -l /dev/ttyCH343USB*` 和 `ls -l /dev/ttyUSB*` 判断模块对应的端口号
+
 TODO:
 
 - [ ] 自动判断端口号对应的模块
