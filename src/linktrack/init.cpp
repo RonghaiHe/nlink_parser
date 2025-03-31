@@ -203,6 +203,7 @@ void Init::initNodeFrame2(NProtocolExtracter *protocol_extraction) {
     msg_data.id = data.id;
     msg_data.local_time = data.local_time;
     msg_data.system_time = data.system_time;
+    msg_data.stamp = ros::Time::now();
     msg_data.voltage = data.voltage;
     ARRAY_ASSIGN(msg_data.pos_3d, data.pos_3d)
     ARRAY_ASSIGN(msg_data.eop_3d, data.eop_3d)
