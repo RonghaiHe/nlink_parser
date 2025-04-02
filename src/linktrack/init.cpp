@@ -213,16 +213,22 @@ void Init::initNodeFrame2(NProtocolExtracter *protocol_extraction) {
     ARRAY_ASSIGN(msg_data.angle_3d, data.angle_3d)
     ARRAY_ASSIGN(msg_data.quaternion, data.quaternion)
 
-    msg_nodes.resize(data.valid_node_count);
+    msg_nodes.resize(data.valid_node_count + 1);
     for (size_t i = 0; i < data.valid_node_count; ++i) {
-      auto &msg_node = msg_nodes[i];
       auto node = data.nodes[i];
+      auto &msg_node = msg_nodes[node->id]; // make sure from 0 to maximum number with +1 increase
       msg_node.id = node->id;
       msg_node.role = node->role;
       msg_node.dis = node->dis;
       msg_node.fp_rssi = node->fp_rssi;
       msg_node.rx_rssi = node->rx_rssi;
     }
+    auto &msg_node = msg_nodes[data.id];
+    msg_node.id = data.id;
+    msg_node.role = data.role;
+    msg_node.dis = 0.0;
+    msg_node.fp_rssi = -82.0;
+    msg_node.rx_rssi = -81.0;
 
     publishers_.at(protocol).publish(msg_data);
   });
